@@ -1,61 +1,108 @@
-<?php
-include 'db.php';
-
-// گرفتن محصولات ویژه از پایگاه داده (برای نمایش در لندینگ پیج)
-$sql = "SELECT * FROM products LIMIT 4"; // گرفتن 4 محصول ویژه برای صفحه لندینگ
-$stmt = $pdo->prepare($sql);
-$stmt->execute();
-$products = $stmt->fetchAll(PDO::FETCH_ASSOC);
-?>
-
 <!DOCTYPE html>
-<html lang="fa">
+<html lang="fa" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="فروشگاه آنلاین">
+    <meta name="description" content="فروشگاه آنلاین | خرید آسان و سریع">
     <title>فروشگاه آنلاین</title>
-    <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/css/main.css">
+    <link rel="stylesheet" href="/components/footer/footer.css">
 </head>
 <body>
-    <!-- Header (ناوبری) -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.php">خانه</a></li>
-                <li><a href="product.php">محصولات</a></li>
-                <li><a href="about.php">درباره ما</a></li>
-                <li><a href="cart.php">سبد خرید</a></li>
-            </ul>
-        </nav>
-    </header>
 
-    <!-- بخش Hero -->
-    <section class="hero">
-        <h1>خوش آمدید به فروشگاه ما!</h1>
-        <p>با محصولات با کیفیت و قیمت‌های مناسب.</p>
-        <button><a href="product.php">مشاهده محصولات</a></button>
-    </section>
+<!-- Header -->
+<?php include("components/header/header.php"); ?>
 
-    <!-- بخش محصولات ویژه -->
-    <section class="featured-products">
-        <h2>محصولات ویژه</h2>
-        <div class="product-list">
-            <?php foreach ($products as $product): ?>
-                <div class="product">
-                    <img src="assets/images/<?php echo htmlspecialchars($product['image']); ?>" alt="<?php echo htmlspecialchars($product['name']); ?>">
-                    <h3><?php echo htmlspecialchars($product['name']); ?></h3>
-                    <p><?php echo substr(htmlspecialchars($product['description']), 0, 100); ?>...</p>
-                    <span class="price"><?php echo number_format($product['price'], 0, ',', ','); ?> تومان</span>
-                    <a href="product.php?id=<?php echo $product['id']; ?>">مشاهده جزئیات</a>
-                </div>
-            <?php endforeach; ?>
+<!-- HERO -->
+<section class="hero-section text-white d-flex align-items-center">
+    <div class="container text-center">
+        <h1 class="fw-bold mb-3">تجربه خرید آنلاین آسان و مطمئن</h1>
+        <p class="lead mb-4">
+            بهترین محصولات با قیمت مناسب، پشتیبانی واقعی و ارسال سریع
+        </p>
+        <a href="product.php" class="btn btn-warning btn-lg px-5">
+            مشاهده محصولات
+        </a>
+    </div>
+</section>
+
+<!-- FEATURES -->
+<section class="container my-5">
+    <div class="row text-center g-4">
+
+        <div class="col-md-4">
+            <div class="feature-box p-4 h-100 shadow-sm">
+                <div class="fs-1 mb-3">🚚</div>
+                <h5 class="fw-bold">ارسال سریع</h5>
+                <p class="text-muted small">
+                    ارسال سفارشات در کوتاه‌ترین زمان ممکن به سراسر کشور
+                </p>
+            </div>
         </div>
-    </section>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 فروشگاه آنلاین. تمامی حقوق محفوظ است.</p>
-    </footer>
+        <div class="col-md-4">
+            <div class="feature-box p-4 h-100 shadow-sm">
+                <div class="fs-1 mb-3">💳</div>
+                <h5 class="fw-bold">پرداخت امن</h5>
+                <p class="text-muted small">
+                    پرداخت آنلاین امن با درگاه‌های معتبر بانکی
+                </p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="feature-box p-4 h-100 shadow-sm">
+                <div class="fs-1 mb-3">⭐</div>
+                <h5 class="fw-bold">کیفیت تضمینی</h5>
+                <p class="text-muted small">
+                    تضمین کیفیت تمام محصولات و پشتیبانی واقعی
+                </p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ABOUT -->
+<section class="bg-light py-5">
+    <div class="container">
+        <div class="row align-items-center">
+
+            <div class="col-md-6 mb-4 mb-md-0">
+                <h2 class="fw-bold mb-3">چرا فروشگاه ما؟</h2>
+                <p class="text-muted">
+                    ما با هدف ایجاد یک تجربه خرید ساده، سریع و امن فعالیت خود را آغاز کرده‌ایم.
+                    تمرکز ما روی کیفیت محصولات، قیمت منصفانه و رضایت مشتری است.
+                </p>
+                <a href="about.php" class="btn btn-outline-primary">
+                    بیشتر بدانید
+                </a>
+            </div>
+
+            <div class="col-md-6 text-center">
+                <img src="assets/images/about.png" class="img-fluid rounded" alt="About us">
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section text-white text-center py-5">
+    <div class="container">
+        <h2 class="fw-bold mb-3">آماده خرید هستید؟</h2>
+        <p class="mb-4">همین حالا محصولات ما را ببینید</p>
+        <a href="product.php" class="btn btn-light btn-lg px-5">
+            ورود به فروشگاه
+        </a>
+    </div>
+</section>
+
+<!-- Footer -->
+<?php include("./components/footer/footer.php"); ?>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
