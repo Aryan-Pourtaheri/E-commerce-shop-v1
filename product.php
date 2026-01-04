@@ -16,19 +16,12 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <meta name="description" content="صفحه محصولات">
     <title>محصولات فروشگاه</title>
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
     <!-- Header (ناوبری) -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.php">خانه</a></li>
-                <li><a href="product.php">محصولات</a></li>
-                <li><a href="about.php">درباره ما</a></li>
-                <li><a href="cart.php">سبد خرید</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include("./components/header/header.php");?>
 
     <!-- بخش محصولات -->
     <section class="all-products">
@@ -47,8 +40,9 @@ $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 فروشگاه آنلاین. تمامی حقوق محفوظ است.</p>
-    </footer>
+    <?php include("./components/footer/footer.php");?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

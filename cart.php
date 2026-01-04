@@ -10,18 +10,12 @@ session_start();
     <meta name="description" content="سبد خرید">
     <title>سبد خرید</title>
     <link rel="stylesheet" href="css/main.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
 <body>
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.php">خانه</a></li>
-                <li><a href="product.php">محصولات</a></li>
-                <li><a href="about.php">درباره ما</a></li>
-                <li><a href="cart.php">سبد خرید</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include("./components/header/header.php");?>
+
 
     <section class="cart">
         <h2>سبد خرید شما</h2>
@@ -59,8 +53,9 @@ session_start();
         </div>
     </section>
 
-    <footer>
-        <p>&copy; 2026 فروشگاه آنلاین. تمامی حقوق محفوظ است.</p>
-    </footer>
+    <?php include("./components/footer/footer.php");?>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

@@ -7,19 +7,12 @@
     <title>درباره ما</title>
     <link rel="stylesheet" href="css/about.css"> <!-- لینک به استایل مخصوص صفحه درباره ما -->
     <link rel="stylesheet" href="css/main.css"> <!-- لینک به استایل مخصوص صفحه درباره ما -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <!-- Header (ناوبری) -->
-    <header>
-        <nav>
-            <ul>
-                <li><a href="index.php">خانه</a></li>
-                <li><a href="product.php">محصولات</a></li>
-                <li><a href="about.php">درباره ما</a></li>
-                <li><a href="cart.php">سبد خرید</a></li>
-            </ul>
-        </nav>
-    </header>
+    <?php include("./components/header/header.php");?>
+
 
     <!-- بخش درباره ما -->
     <section class="about-section">
@@ -43,8 +36,8 @@
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 فروشگاه آنلاین. تمامی حقوق محفوظ است.</p>
-    </footer>
+    <?php include("./components/footer/footer.php");?>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>
